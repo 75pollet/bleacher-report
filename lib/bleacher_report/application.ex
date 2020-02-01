@@ -12,6 +12,7 @@ defmodule BleacherReport.Application do
       BleacherReport.Repo,
       # Start the endpoint when the application starts
       BleacherReportWeb.Endpoint,
+      {ConCache, [name: :bleacher_cache, ttl_check_interval: false]}
       # Starts a worker by calling: BleacherReport.Worker.start_link(arg)
       # {BleacherReport.Worker, arg},
     ]
