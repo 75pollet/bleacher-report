@@ -19,6 +19,28 @@ defmodule BleacherReport.Reports do
   end
 
   @doc """
+  delete reaction from the database
+  """
+  def delete_report(report) do
+    Repo.delete(report)
+  end
+
+  @doc """
+  deletes reaction from the database and updates the cache
+  """
+  def delete_and_update_cache(params) do
+    case Repo.get(Report, params["user_id"]) do
+      nil ->
+        nil
+
+      report ->
+        delete_report(report)
+
+        ConCache.put(@cache, params["content_id"], _reports_by_content_id(params["content_id"]))
+    end
+  end
+
+  @doc """
   checks if the user id exists. if it does not, the report is inserted.
   if it does, then the report is updated instead
   """
