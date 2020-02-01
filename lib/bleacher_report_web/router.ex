@@ -5,7 +5,9 @@ defmodule BleacherReportWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", BleacherReportWeb do
+  scope "/", BleacherReportWeb do
     pipe_through :api
+
+    post "/reaction", BleacherReportController, :new
   end
 end
