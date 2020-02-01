@@ -8,6 +8,6 @@ defmodule BleacherReportWeb.Router do
   scope "/", BleacherReportWeb do
     pipe_through :api
 
-    post "/reaction", BleacherReportController, :new
+    post "/reaction", BleacherReportController, :reaction
   end
 end
