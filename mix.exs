@@ -20,7 +20,7 @@ defmodule BleacherReport.MixProject do
   def application do
     [
       mod: {BleacherReport.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :con_cache]
     ]
   end
 
@@ -40,7 +40,8 @@ defmodule BleacherReport.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:cowboy, "~> 2.5"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:con_cache, "~> 0.13"}
     ]
   end
 
