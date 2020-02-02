@@ -5,7 +5,7 @@ defmodule BleacherReportWeb.BleacherReportControllerTest do
     insertion_attrs = %{
       "user_id" => "1234",
       "action" => "add",
-      "content_id" => "05ac4567jhn-3456g",
+      "content_id" => "05ac456jhn-3456g",
       "reaction_type" => "reaction",
       "type" => "fire"
     }
@@ -13,7 +13,7 @@ defmodule BleacherReportWeb.BleacherReportControllerTest do
     [attrs: insertion_attrs]
   end
 
-  test "reaction/2 saves reactions to the database", %{attrs: attrs, conn: conn} do
+  test "reaction/2 saves reactions to the cache", %{attrs: attrs, conn: conn} do
     conn = conn |> post("/reaction", attrs)
 
     assert conn.status == 200
