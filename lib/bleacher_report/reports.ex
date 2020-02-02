@@ -73,6 +73,13 @@ defmodule BleacherReport.Reports do
     Repo.all(query)
   end
 
+  @doc """
+  get the reactions for a specific content id
+  """
+  def get_reactions(content_id) do
+    ConCache.get(@cache, content_id)
+  end
+
   defp _reports_by_content_id(content_id) do
     content_id
     |> _get_reports()

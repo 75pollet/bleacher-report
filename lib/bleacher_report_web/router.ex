@@ -9,5 +9,6 @@ defmodule BleacherReportWeb.Router do
     pipe_through :api
 
     post "/reaction", BleacherReportController, :reaction
+    get "/reaction_counts/:content_id", BleacherReportController, :count
   end
 end
