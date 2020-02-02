@@ -51,4 +51,22 @@ defmodule BleacherReportWeb.BleacherReportControllerTest do
     assert conn.status == 422
     assert conn.resp_body == "reaction doesn't exist"
   end
+
+  test "count/2 returns the number of reactions for a specific content id", %{
+    attrs: attrs,
+    conn: conn
+  } do
+    conn |> post("/reaction", attrs)
+    content_id = attrs["content_id"]
+    conn = conn |> get("/reaction_counts/#{content_id}")
+
+    assert conn.status == 200
+
+    resp_body = Jason.decode!(conn.resp_body)
+
+    assert resp_body == %{
+             "content_id" => content_id,
+             "reaction_count" => %{"fire" => 1}
+           }
+  end
 end
