@@ -16,4 +16,11 @@ defmodule BleacherReportWeb.BleacherReportController do
       _ -> send_resp(conn, 422, "reaction doesn't exist")
     end
   end
+
+  def count(conn, %{"content_id" => content_id}) do
+    case Reports.get_reactions(content_id) do
+      nil -> send_resp(conn, 404, "")
+      reactions -> render(conn, "reaction.json", reactions: reactions, content_id: content_id)
+    end
+  end
 end
